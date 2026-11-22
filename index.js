@@ -5,25 +5,32 @@ if (summary === null) {
   alert('Canceled');
 } else if (interest === null) {
   alert('Canceled');
-} else if (Number.isNaN(summary)) {
-  alert('Invalid input data');
-} else if (summary <= 0) {
-  alert('Invalid input data');
-} else if (Number.isNaN(interest)) {
-  alert('Invalid input data');
-} else if (interest < 0) {
-  alert('Invalid input data');
-} else if (interest > 100) {
-  alert('Invalid input data');
 } else {
   const sum = Number(summary);
   const rate = Number(interest);
-  const tip = (sum * rate) / 100;
-  const total = sum + tip;
 
-  alert(`
-    Check sum: ${sum}
-    Tip: ${rate}
-    Tip amount: ${tip}
-    Total sum to pay: ${total}`);
+  if (summary === '') {
+    alert('Invalid input data');
+  } else if (Number.isNaN(sum)) {
+    alert('Invalid input data');
+  } else if (sum <= 0) {
+    alert('Invalid input data');
+  } else if (interest === '') {
+    alert('Invalid input data');
+  } else if (Number.isNaN(rate)) {
+    alert('Invalid input data');
+  } else if (rate < 0) {
+    alert('Invalid input data');
+  } else if (rate > 100) {
+    alert('Invalid input data');
+  } else {
+    let tip = (sum * rate) / 100;
+    let total = sum + tip;
+    tip = tip.toFixed(2);
+    total = total.toFixed(2);
+
+    alert(
+      `Check sum: ${sum}\n\nTip: ${rate}\n\nTip amount: ${tip}\n\nTotal sum to pay: ${total}`
+    );
+  }
 }
