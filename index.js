@@ -6,16 +6,18 @@ if (summary === null) {
 } else if (interest === null) {
   alert('Canceled');
 } else {
-  const sum = Number(summary);
-  const rate = Number(interest);
+  const summaryTrim = summary.trim();
+  const interestTrim = interest.trim();
+  let sum = Number(summaryTrim);
+  const rate = Number(interestTrim);
 
-  if (summary === '') {
+  if (summaryTrim === '') {
     alert('Invalid input data');
   } else if (Number.isNaN(sum)) {
     alert('Invalid input data');
   } else if (sum <= 0) {
     alert('Invalid input data');
-  } else if (interest === '') {
+  } else if (interestTrim === '') {
     alert('Invalid input data');
   } else if (Number.isNaN(rate)) {
     alert('Invalid input data');
@@ -26,6 +28,7 @@ if (summary === null) {
   } else {
     let tip = (sum * rate) / 100;
     let total = sum + tip;
+    sum = sum.toFixed(2);
     tip = tip.toFixed(2);
     total = total.toFixed(2);
 
